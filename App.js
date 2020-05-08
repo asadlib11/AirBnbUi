@@ -1,12 +1,13 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { Image } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Explore from './screens/Explore';
 import Inbox from './screens/inbox';
 import Saved from './screens/Saved';
 import Trips from './screens/Trips';
-import Icon from 'react-native-vector-icons/Ionicons';
+import { Ionicons } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons'; 
 import Profile from './screens/Profile';
 
 const Tab = createBottomTabNavigator();
@@ -16,9 +17,8 @@ function MyTabs(){
       initialRouteName="Explore"
       tabBarOptions={{
         activeTintColor: 'red',
-        inactiveTintColor: 'grey',
         styles:{
-          backgroundColor: 'white',
+          backgroundColor: 'red',
           borderTopWidth: 0,
           shadowOffset: {width:5, height:3},
           shadowColor: 'black',
@@ -32,8 +32,8 @@ function MyTabs(){
         component={Explore}
         options={{
           tabBarLabel: 'EXPLORE',
-          tabBarIcon:({tintColor})=>(
-            <Icon name="ios-search-outline" color={tintColor} size={24} />
+          tabBarIcon:({color})=>(
+            <Ionicons name="ios-search" color={color} size={24} type="Ionicons" />
           )
         }}
       />
@@ -43,8 +43,8 @@ function MyTabs(){
         component={Saved}
         options={{
           tabBarLabel: 'SAVED',
-          tabBarIcon:({tintColor})=>(
-            <Icon name="ios-heart-outline" color={tintColor} size={24} />
+          tabBarIcon:({color})=>(
+            <Ionicons name="ios-heart-empty" color={color} size={24} type="Ionicons" />
           )
         }}
       />
@@ -54,8 +54,8 @@ function MyTabs(){
         component={Trips}
         options={{
           tabBarLabel: 'TRIPS',
-          tabBarIcon:({tintColor})=>(
-            <Image source={require('./assets/airbnb.png')} style={{ height: 24, width: 24, tintColor: tintColor }} />
+          tabBarIcon:({color})=>(
+            <Image source={require('./assets/airbnb.png')} style={{ height: 24, width: 24, tintColor: color }} />
           )
         }}
       />
@@ -65,8 +65,8 @@ function MyTabs(){
         component={Inbox}
         options={{
           tabBarLabel: 'INBOX',
-          tabBarIcon:({tintColor})=>(
-            <Icon name="ios-inbox-outline" color={tintColor} size={24} />
+          tabBarIcon:({color})=>(
+            <MaterialIcons name="chat-bubble-outline" color={color} size={24} />
           )
         }}
       />
@@ -76,8 +76,8 @@ function MyTabs(){
         component={Profile}
         options={{
           tabBarLabel: 'PROFILE',
-          tabBarIcon:({tintColor})=>(
-            <Icon name="ios-person-outline" color={tintColor} size={24} />
+          tabBarIcon:({color})=>(
+            <MaterialIcons name="person-outline" color={color} size={24} />
           )
         }}
       />
@@ -93,73 +93,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-// export default createBottomTabNavigator({
-//   Explore: {
-//     screen: Explore,
-//     navigationOptions: {
-//       tabBarLabel: 'EXPLORE',
-//       tabBarIcon:({tintColor})=>(
-//         <Icon name="ios-search-outline" color={tintColor} size={24} />
-//       )
-//     }
-//   }, 
-//   Saved: {
-//     screen: Saved,
-//     navigationOptions: {
-//       tabBarLabel: 'SAVED',
-//       tabBarIcon:({tintColor})=>(
-//         <Icon name="ios-heart-outline" color={tintColor} size={24} />
-//       )
-//     }
-//   }, 
-//   Trips: {
-//     screen: Trips,
-//     navigationOptions: {
-//       tabBarLabel: 'TRIPS',
-//       tabBarIcon:({tintColor})=>(
-//         <Image source={require('./assets/airbnb.png')} style={{ height: 24, width: 24, tintColor: tintColor }} />
-//       )
-//     }
-//   },
-//   Inbox: {
-//     screen: Inbox,
-//     navigationOptions: {
-//       tabBarLabel: 'INBOX',
-//       tabBarIcon:({tintColor})=>(
-//         <Icon name="ios-inbox-outline" color={tintColor} size={24} />
-//       )
-//     }
-//   },
-//   Profile: {
-//     screen: Profile,
-//     navigationOptions: {
-//       tabBarLabel: 'PROFILE',
-//       tabBarIcon:({tintColor})=>(
-//         <Icon name="ios-person-outline" color={tintColor} size={24} />
-//       )
-//     }
-//   }
-// },{
-//   tabBarOptions:{
-//     activeTintColor: 'red',
-//     inactiveTintColor: 'grey',
-//     styles:{
-//       backgroundColor: 'white',
-//       borderTopWidth: 0,
-//       shadowOffset: {width:5, height:3},
-//       shadowColor: 'black',
-//       shadowOpacity: 0.5,
-//       elevation: 5
-//     }
-//   }
-// })
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
